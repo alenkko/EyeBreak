@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 @main
 struct EyeBreakApp: App {
+    @StateObject private var timerManager = TimerManager()
+    
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra(timerManager.timeRemainingText) {
+            MenuView(timerManager: timerManager)
+                .padding()
+                .frame(width: 350)
         }
+        .menuBarExtraStyle(.window)
     }
 }
