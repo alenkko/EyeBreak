@@ -2,7 +2,7 @@ Jednostavna aplikacija koja omogućuje postavljanje brojača koji podsjeti koris
 
 
 ## Screenshots
-![Menu bar look](screenshots/MenuBarLook.png)
-![Settings](screenshots/Settings.png)
-![Active timer](screenshots/ActiveTimer.png)
-![Alert](screenshots/Alert.png)
+![Menu bar look](Screenshots/MenuBarLook.png)
+![Settings](Screenshots/Settings.png)
+![Active timer](Screenshots/ActiveTimer.png)
+![Alert](Screenshots/Alert.png)
