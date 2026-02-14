@@ -8,51 +8,44 @@
 import SwiftUI
 
 struct MenuView: View {
-    @ObservedObject var timerManager: TimerManager
-    @State private var isHovering = false
-
+    @EnvironmentObject var timerManager: TimerManager
+    
     var body: some View {
-        Toggle("Turn on timer", isOn: $timerManager.isOn)
-            .onChange(of: timerManager.isOn) { oldValue, newValue in
-                if newValue {
-                    timerManager.startTimer()
-                } else {
-                    timerManager.stopTimer()
+        VStack {
+            if !timerManager.timerRunning {
+                Button(action: {timerManager.startTimer()}) {
+                    Text("Start timer")
+                }
+            } else {
+                HStack {
+                    if !timerManager.timerPaused {
+                        Button(action: {timerManager.pauseCurrentTimer()}) {
+                            Text("Pause timer")
+                        }
+                    } else {
+                        Button(action: {timerManager.resumeTimer()}) {
+                            Text("Resume timer")
+                        }
+                    }
+                    Button(action: {timerManager.stopTimer()}) {
+                        Text("Reset timer")
+                    }
                 }
             }
-        Toggle("Repeat timer", isOn: $timerManager.timerRepeat)
-        Toggle("Use full screen pause", isOn: $timerManager.useFullScreenPause)
-        HStack {
-            Text("Duration: \(Int(timerManager.intervalMinutes)) min")
-            Slider(value: $timerManager.intervalMinutes, in: 1...120, step: 1)
-                .frame(width: 150)
+            Toggle("Repeat timer", isOn: $timerManager.timerRepeat)
+            Divider()
+            Slider(value: $timerManager.timerInterval, in: 0.2...60)
+                .frame(width: 300)
+            Text("Timer duration: \(Int(timerManager.timerInterval.rounded())) minutes")
+            
+            Slider(value: $timerManager.pauseInterval, in: 0.2...60)
+                .frame(width: 300)
+            Text("Pause duration: \(Int(timerManager.pauseInterval.rounded())) seconds")
         }
-        HStack {
-            Text("Pause duration: \(Int(timerManager.pauseInterval)) sec")
-            Slider(value: $timerManager.pauseInterval, in: 1...120, step: 1)
-                .frame(width: 150)
-        }
-        
-        Divider()
-        
-        Button("Quit") {
-            NSApplication.shared.terminate(nil)
-        }
-        .scaleEffect(isHovering ? 1.05 : 1.0)
-        .foregroundColor(isHovering ? .white : .primary)
-        .onHover { hovering in
-            withAnimation(.easeInOut(duration: 0.2)) {
-                isHovering = hovering
-            }
-            if hovering {
-                NSCursor.pointingHand.push()
-            } else {
-                NSCursor.pop()
-            }
-        }
+        .padding()
     }
 }
 
 #Preview {
-    MenuView(timerManager: TimerManager())
+    MenuView()
 }
