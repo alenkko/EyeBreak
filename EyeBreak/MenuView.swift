@@ -41,6 +41,14 @@ struct MenuView: View {
             Slider(value: $timerManager.pauseInterval, in: 0.2...60)
                 .frame(width: 300)
             Text("Pause duration: \(Int(timerManager.pauseInterval.rounded())) seconds")
+            
+            Divider()
+            Button(action: {
+                NSApplication.shared.terminate(nil)
+            }) {
+                Text("Quit EyeBreak")
+                    .foregroundColor(.red)
+            }
         }
         .padding()
     }
@@ -48,4 +56,5 @@ struct MenuView: View {
 
 #Preview {
     MenuView()
+        .environmentObject(TimerManager())
 }

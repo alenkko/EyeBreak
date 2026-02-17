@@ -1,6 +1,5 @@
 //
 //  TimerManager.swift
-//  EyeBreak
 //
 //  Created by Alen Jurina on 13.02.2026..
 //
