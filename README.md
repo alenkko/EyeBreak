@@ -1,24 +1,23 @@
-Jednostavna aplikacija koja omogućuje postavljanje brojača koji podsjeti korisnika da pogleda barem 20 metara u daljinu na nekoliko sekundi za zaštitu očiju.
-
+## EyeBreak
+A simple app that lets users set a timer to remind them to look at least 20 meters away for a few seconds, helping protect their eyes.
 
 ## Screenshots
-
-<p align="center">
-  <h2>Menu bar</h2>
+### Menu bar
+<p align="left">
   <img src="Screenshots/MenuBarLook.png"/>
 </p>
 
-<p align="center">
-  <h2>Settings</h2>
-  <img src="Screenshots/Settings.png" height="200" />
+### Settings
+<p align="left">
+  <img src="Screenshots/Settings.png" height="300" />
 </p>
 
-<p align="center">
-  <h2>Active timer</h2>
+### Active timer
+<p align="left">
   <img src="Screenshots/ActiveTimer.png" />
 </p>
 
-<p align="center">
-  <h2>Alert</h2>
-  <img src="Screenshots/Alert.png" height="300" />
+### Alert
+<p align="left">
+  <img src="Screenshots/Alert.png" width="500" />
 </p>
